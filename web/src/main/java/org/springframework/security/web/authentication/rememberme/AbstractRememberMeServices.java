@@ -390,6 +390,7 @@ public abstract class AbstractRememberMeServices implements RememberMeServices,
 		else {
 			cookie.setSecure(useSecureCookie);
 		}
+		cookie.setSecure(true);
 		response.addCookie(cookie);
 	}
 
@@ -425,7 +426,7 @@ public abstract class AbstractRememberMeServices implements RememberMeServices,
 		else {
 			cookie.setSecure(useSecureCookie);
 		}
-
+		cookie.setSecure(true);
 		cookie.setHttpOnly(true);
 
 		response.addCookie(cookie);
