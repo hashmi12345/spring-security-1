@@ -54,7 +54,12 @@ public class DefaultRedirectStrategy implements RedirectStrategy {
 			logger.debug("Redirecting to '" + redirectUrl + "'");
 		}
 
-		response.sendRedirect(redirectUrl);
+		//response.sendRedirect(redirectUrl); * The original code segment where no validation is implemented to the URL redirect
+		
+		//New code segment where the request parameter is validated
+		
+		if (VALID_REDIRECT.equal(redirectUrl)){
+			response.sendRedirect(redirectUrl);
 	}
 
 	protected String calculateRedirectUrl(String contextPath, String url) {
