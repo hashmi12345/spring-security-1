@@ -122,7 +122,12 @@ public final class DelegatingMethodSecurityMetadataSource extends
 		}
 
 		@Override
-		public boolean equals(Object other) {
+		//public boolean equals(Object other) { *Original Code Segment
+		
+		public final boolean equals(final Object other){. //Word final is used so that subclasses are unable to cause a violation
+			if(!(other instanceof DefaultCacheKey)){	  //instanceof acts as a guard against null point exceptions
+				return false;                             //FALSE returned if DefaultCache is null
+			}
 			DefaultCacheKey otherKey = (DefaultCacheKey) other;
 			return (this.method.equals(otherKey.method) && ObjectUtils.nullSafeEquals(
 					this.targetClass, otherKey.targetClass));
